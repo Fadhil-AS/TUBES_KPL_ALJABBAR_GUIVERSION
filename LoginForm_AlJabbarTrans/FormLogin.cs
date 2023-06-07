@@ -23,7 +23,6 @@ namespace LoginForm_AlJabbarTrans
             Idle,
             InputEmail,
             InputPassword,
-            InvalidEmail,
             LoggedIn
         }
 
