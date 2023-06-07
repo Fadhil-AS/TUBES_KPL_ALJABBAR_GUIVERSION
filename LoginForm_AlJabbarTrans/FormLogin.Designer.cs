@@ -33,7 +33,7 @@
             textBoxPassword = new TextBox();
             buttonMasuk = new Button();
             buttonDaftar = new Button();
-            label1 = new Label();
+            labelLupaPassword = new Label();
             SuspendLayout();
             // 
             // labelLogin
@@ -56,6 +56,7 @@
             textBoxEmail.Size = new Size(255, 34);
             textBoxEmail.TabIndex = 2;
             textBoxEmail.Text = "Masukkan Email";
+            textBoxEmail.TextChanged += textBoxEmail_TextChanged;
             // 
             // textBoxPassword
             // 
@@ -91,15 +92,16 @@
             buttonDaftar.UseVisualStyleBackColor = false;
             buttonDaftar.Click += buttonDaftar_Click;
             // 
-            // label1
+            // labelLupaPassword
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(156, 313);
-            label1.Name = "label1";
-            label1.Size = new Size(113, 20);
-            label1.TabIndex = 7;
-            label1.Text = "Lupa Password?";
+            labelLupaPassword.AutoSize = true;
+            labelLupaPassword.ForeColor = Color.White;
+            labelLupaPassword.Location = new Point(156, 313);
+            labelLupaPassword.Name = "labelLupaPassword";
+            labelLupaPassword.Size = new Size(113, 20);
+            labelLupaPassword.TabIndex = 7;
+            labelLupaPassword.Text = "Lupa Password?";
+            labelLupaPassword.Click += labelLupaPassword_Click;
             // 
             // formLogin
             // 
@@ -107,7 +109,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 109, 110);
             ClientSize = new Size(303, 568);
-            Controls.Add(label1);
+            Controls.Add(labelLupaPassword);
             Controls.Add(buttonDaftar);
             Controls.Add(buttonMasuk);
             Controls.Add(textBoxPassword);
@@ -129,6 +131,6 @@
         private TextBox textBoxPassword;
         private Button buttonMasuk;
         private Button buttonDaftar;
-        private Label label1;
+        private Label labelLupaPassword;
     }
 }

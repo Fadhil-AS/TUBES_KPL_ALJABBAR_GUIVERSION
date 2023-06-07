@@ -2,6 +2,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using RegisterFormsApp;
+using DashboardApp;
+using LupaPasswordFormsApp;
 
 namespace LoginForm_AlJabbarTrans
 {
@@ -10,9 +12,31 @@ namespace LoginForm_AlJabbarTrans
         public formLogin()
         {
             InitializeComponent();
-            /*Color customColor = Color.FromArgb(71, 169, 146);
-            this.BackColor = customColor;*/
+
+            // Melakukan set State awal
+            currentState = State.Idle;
         }
+
+        // Daftar state dalam state machine
+        private enum State
+        { 
+            Idle,
+            InputEmail,
+            InputPassword,
+            InvalidEmail,
+            LoggedIn
+        }
+
+        private State currentState;
+
+        // Table transisi untuk state machine
+        private readonly State[,] transitionTable =
+        {
+            // State awal     Event                       Next State
+            /* Idle */   { State.InputEmail,           State.Idle,         State.Idle},
+            /* InputEmail */  { State.InputEmail,  State.InputPassword,  State.Idle},
+            /* LoggedIn */  { State.InputEmail,     State.InputPassword, State.LoggedIn}
+        };
 
         // Method textBoxPassword_TextChanged digunakan untuk mengganti bentuk teks menjadi asterisk
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
@@ -48,21 +72,49 @@ namespace LoginForm_AlJabbarTrans
             }
         }
 
+        // Mendapatkan indeks event berdasarkan state saat ini
+        private int GetEventIndex()
+        {
+            switch (currentState)
+            {
+                case State.Idle:
+                    return 0;
+                case State.InputEmail:
+                    return 1;
+                case State.InputPassword:
+                    return 2;
+                case State.LoggedIn:
+                    return 3;
+                default:
+                    return -1;
+            }
+        }
+
         // Method buttonMasuk_Click digunakan untuk masuk ke halaman dashboard/awal dengan menggunakan validasi
         private void buttonMasuk_Click(object sender, EventArgs e)
         {
             string email = textBoxEmail.Text;
             string password = textBoxPassword.Text;
 
-            // Memeriksa jika email atau password kosong
+            
+            // Melakukan pengechekan event saat ini dan memperoleh next state dari tabel transisi
+            State nextState = transitionTable[(int)currentState, GetEventIndex()];
+
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Email dan password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Menghentikan eksekusi dan tetap berada di halaman login
+                currentState = nextState;
+            }
+            else if (!email.Contains("@"))
+            {
+                MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                currentState = nextState;
             }
             else 
             {
-                //
+                dashboardApp nextDashboardApp = new dashboardApp();
+                nextDashboardApp.Show();
+                this.Hide();
             }
         }
 
@@ -85,9 +137,22 @@ namespace LoginForm_AlJabbarTrans
         }
 
         // Method formLogin_FormClosed digunakan untuk menutup formLogin
-        private void formLogin_FormClosed(object sender, FormClosedEventArgs e) { 
+        private void formLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
             // Menutup aplikasi saat formLogin ditutup
             Application.Exit();
+        }
+
+        private void textBoxEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelLupaPassword_Click(object sender, EventArgs e)
+        {
+            lupaPassword nextLupaPasswordFormApp = new lupaPassword();
+            nextLupaPasswordFormApp.Show();
+            this.Hide();
         }
     }
 }
