@@ -4,6 +4,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using RegisterFormsApp;
 using DashboardApp;
 using LupaPasswordFormsApp;
+using System.Diagnostics.Contracts;
+using System.Diagnostics;
 
 namespace LoginForm_AlJabbarTrans
 {
@@ -95,9 +97,24 @@ namespace LoginForm_AlJabbarTrans
             string email = textBoxEmail.Text;
             string password = textBoxPassword.Text;
 
-            
+            // Precondition: Email dan password tidak boleh kosong
+            Contract.Requires(email != "");
+            Contract.Requires(password != "");
+            Debug.Assert(!string.IsNullOrEmpty(email), "Email tidak boleh kosong!");
+            Debug.Assert(!string.IsNullOrEmpty(password), "Password tidak boleh kosong!");
+
+            // Precondition: Email harus memiliki domain atau symbol "@"
+            Contract.Requires(email == "@");
+            Debug.Assert(email.Contains("@"), "Email harus memiliki domain");
+
+
             // Melakukan pengechekan event saat ini dan memperoleh next state dari tabel transisi
             State nextState = transitionTable[(int)currentState, GetEventIndex()];
+
+            // Postcondition: nextState harus State.LoggedIn
+            Contract.Ensures(nextState == State.LoggedIn);
+            Debug.Assert(nextState == State.Idle, "Masih berada di halaman Login");
+            
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -109,7 +126,7 @@ namespace LoginForm_AlJabbarTrans
                 MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 currentState = nextState;
             }
-            else 
+            else
             {
                 dashboardApp nextDashboardApp = new dashboardApp();
                 nextDashboardApp.Show();
