@@ -6,6 +6,7 @@ using DashboardApp;
 using LupaPasswordFormsApp;
 using System.Diagnostics.Contracts;
 using System.Diagnostics;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace LoginForm_AlJabbarTrans
 {
@@ -17,6 +18,10 @@ namespace LoginForm_AlJabbarTrans
 
             // Melakukan set State awal
             currentState = State.Idle;
+
+            // Menambahkan event handler ke event KeyDown textBoxEmail
+            textBoxEmail.Click += textBox_Click;
+            textBoxPassword.Click += textBox_Click;
         }
 
         // Daftar state dalam state machine
@@ -33,9 +38,10 @@ namespace LoginForm_AlJabbarTrans
         // Table transisi untuk state machine
         private readonly State[,] transitionTable =
         {
-            // State awal     Event                       Next State
+            // State awal, Event, Next State
             /* Idle */   { State.InputEmail,           State.Idle,         State.Idle},
             /* InputEmail */  { State.InputEmail,  State.InputPassword,  State.Idle},
+            /* InputPassword */  { State.Idle,  State.InputPassword,  State.Idle},
             /* LoggedIn */  { State.InputEmail,     State.InputPassword, State.LoggedIn}
         };
 
@@ -97,28 +103,22 @@ namespace LoginForm_AlJabbarTrans
             string email = textBoxEmail.Text;
             string password = textBoxPassword.Text;
 
-            // Precondition: Email dan password tidak boleh kosong
-            Contract.Requires(email != "");
-            Contract.Requires(password != "");
-            Debug.Assert(!string.IsNullOrEmpty(email), "Email tidak boleh kosong!");
-            Debug.Assert(!string.IsNullOrEmpty(password), "Password tidak boleh kosong!");
-
-            // Precondition: Email harus memiliki domain atau symbol "@"
-            Contract.Requires(email == "@");
-            Debug.Assert(email.Contains("@"), "Email harus memiliki domain");
-
-
             // Melakukan pengechekan event saat ini dan memperoleh next state dari tabel transisi
             State nextState = transitionTable[(int)currentState, GetEventIndex()];
-
-            // Postcondition: nextState harus State.LoggedIn
-            Contract.Ensures(nextState == State.LoggedIn);
-            Debug.Assert(nextState == State.Idle, "Masih berada di halaman Login");
             
-
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Email dan password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                currentState = nextState;
+            }
+            else if (string.IsNullOrEmpty(email)) 
+            {
+                MessageBox.Show("Email harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                currentState = nextState;
+            }
+            else if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 currentState = nextState;
             }
             else if (!email.Contains("@"))
@@ -161,14 +161,21 @@ namespace LoginForm_AlJabbarTrans
 
         private void textBoxEmail_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
+        // Method labelLupaPassword_Click untuk menampilkan halaman LupaPasswordFormApp
         private void labelLupaPassword_Click(object sender, EventArgs e)
         {
             lupaPassword nextLupaPasswordFormApp = new lupaPassword();
             nextLupaPasswordFormApp.Show();
             this.Hide();
+        }
+
+        private void textBox_Click(object sender, EventArgs e)
+        {
+                TextBox textBox = (TextBox)sender;
+                textBox.Text = string.Empty;
         }
     }
 }
