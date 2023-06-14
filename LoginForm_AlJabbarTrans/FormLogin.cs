@@ -39,9 +39,9 @@ namespace LoginForm_AlJabbarTrans
             }
             else
             {
-                /*Beranda nextDashboardApp = new Beranda();
+                Beranda nextDashboardApp = new Beranda();
                 nextDashboardApp.Show();
-                this.Hide();*/
+                this.Hide();
             }
         }
 
