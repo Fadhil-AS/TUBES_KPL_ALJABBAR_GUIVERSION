@@ -4,6 +4,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics.Contracts;
 using System.Diagnostics;
 using TextBox = System.Windows.Forms.TextBox;
+using AlJabbarTrans;
 
 namespace LoginForm_AlJabbarTrans
 {
@@ -72,6 +73,13 @@ namespace LoginForm_AlJabbarTrans
         private void textBoxEmail_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonDaftar_Click(object sender, EventArgs e)
+        {
+            FormRegister register = new FormRegister(); 
+            register.Show();
+            this.Hide();
         }
 
         // Method labelLupaPassword_Click untuk menampilkan halaman LupaPasswordFormApp

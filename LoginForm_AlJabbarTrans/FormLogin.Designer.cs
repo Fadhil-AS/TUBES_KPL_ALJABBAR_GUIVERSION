@@ -90,6 +90,7 @@
             buttonDaftar.TabIndex = 6;
             buttonDaftar.Text = "Daftar";
             buttonDaftar.UseVisualStyleBackColor = false;
+            buttonDaftar.Click += buttonDaftar_Click;
             // 
             // labelLupaPassword
             // 
