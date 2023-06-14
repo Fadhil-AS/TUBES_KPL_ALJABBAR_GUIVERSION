@@ -34,6 +34,8 @@
             buttonMasuk = new Button();
             buttonDaftar = new Button();
             labelLupaPassword = new Label();
+            labelEmail = new Label();
+            labelPassword = new Label();
             SuspendLayout();
             // 
             // labelLogin
@@ -41,7 +43,7 @@
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             labelLogin.ForeColor = Color.White;
-            labelLogin.Location = new Point(14, 137);
+            labelLogin.Location = new Point(14, 102);
             labelLogin.Name = "labelLogin";
             labelLogin.Size = new Size(75, 31);
             labelLogin.TabIndex = 0;
@@ -51,22 +53,20 @@
             // textBoxEmail
             // 
             textBoxEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxEmail.Location = new Point(14, 192);
+            textBoxEmail.Location = new Point(14, 201);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(255, 34);
             textBoxEmail.TabIndex = 2;
-            textBoxEmail.Text = "Masukkan Email";
             textBoxEmail.TextChanged += textBoxEmail_TextChanged;
             // 
             // textBoxPassword
             // 
             textBoxPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxPassword.Location = new Point(14, 255);
+            textBoxPassword.Location = new Point(14, 268);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(255, 32);
             textBoxPassword.TabIndex = 4;
-            textBoxPassword.Text = "Masukkan Password";
-            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
+            textBoxPassword.UseSystemPasswordChar = true;
             // 
             // buttonMasuk
             // 
@@ -90,7 +90,6 @@
             buttonDaftar.TabIndex = 6;
             buttonDaftar.Text = "Daftar";
             buttonDaftar.UseVisualStyleBackColor = false;
-            buttonDaftar.Click += buttonDaftar_Click;
             // 
             // labelLupaPassword
             // 
@@ -101,14 +100,35 @@
             labelLupaPassword.Size = new Size(113, 20);
             labelLupaPassword.TabIndex = 7;
             labelLupaPassword.Text = "Lupa Password?";
-            labelLupaPassword.Click += labelLupaPassword_Click;
+            // 
+            // labelEmail
+            // 
+            labelEmail.AutoSize = true;
+            labelEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelEmail.Location = new Point(14, 170);
+            labelEmail.Name = "labelEmail";
+            labelEmail.Size = new Size(59, 28);
+            labelEmail.TabIndex = 8;
+            labelEmail.Text = "Email";
+            // 
+            // labelPassword
+            // 
+            labelPassword.AutoSize = true;
+            labelPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPassword.Location = new Point(14, 238);
+            labelPassword.Name = "labelPassword";
+            labelPassword.Size = new Size(93, 28);
+            labelPassword.TabIndex = 9;
+            labelPassword.Text = "Password";
             // 
             // formLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 109, 110);
-            ClientSize = new Size(303, 568);
+            ClientSize = new Size(306, 544);
+            Controls.Add(labelPassword);
+            Controls.Add(labelEmail);
             Controls.Add(labelLupaPassword);
             Controls.Add(buttonDaftar);
             Controls.Add(buttonMasuk);
@@ -132,5 +152,7 @@
         private Button buttonMasuk;
         private Button buttonDaftar;
         private Label labelLupaPassword;
+        private Label labelEmail;
+        private Label labelPassword;
     }
 }

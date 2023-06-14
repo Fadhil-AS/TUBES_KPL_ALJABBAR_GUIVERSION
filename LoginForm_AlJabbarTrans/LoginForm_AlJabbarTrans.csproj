@@ -8,10 +8,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DashboardApp\DashboardApp.csproj" />
-    <ProjectReference Include="..\LupaPasswordFormsApp\LupaPasswordFormsApp.csproj" />
-    <ProjectReference Include="..\RegisterFormsApp\RegisterFormsApp.csproj" />
-  </ItemGroup>
-
 </Project>
