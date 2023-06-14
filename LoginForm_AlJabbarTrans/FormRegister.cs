@@ -45,5 +45,10 @@ namespace AlJabbarTrans
                 MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void textBoxEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

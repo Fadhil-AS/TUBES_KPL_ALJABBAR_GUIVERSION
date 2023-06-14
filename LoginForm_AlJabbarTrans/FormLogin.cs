@@ -77,8 +77,15 @@ namespace LoginForm_AlJabbarTrans
 
         private void buttonDaftar_Click(object sender, EventArgs e)
         {
-            FormRegister register = new FormRegister(); 
+            FormRegister register = new FormRegister();
             register.Show();
+            this.Hide();
+        }
+
+        private void labelLupaPassword_Click(object sender, EventArgs e)
+        {
+            FormLupaPassword formLupaPassword = new FormLupaPassword();
+            formLupaPassword.Show();
             this.Hide();
         }
 
