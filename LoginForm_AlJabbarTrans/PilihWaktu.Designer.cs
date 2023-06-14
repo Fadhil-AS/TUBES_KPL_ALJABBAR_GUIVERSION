@@ -201,6 +201,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 109, 110);
             ClientSize = new Size(288, 497);
+            ControlBox = false;
             Controls.Add(button2);
             Controls.Add(comboBox2);
             Controls.Add(label10);
@@ -215,7 +216,10 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(comboBox1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "PilihWaktu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PilihWaktu";
             Load += PilihWaktu_Load;
             ResumeLayout(false);

@@ -44,8 +44,8 @@ namespace AlJabbarTrans
         {
             // Mengaktifkan trigger PILIH_WAKTU pada state machine menu dan memperbarui state nextState
             prosesPesan nextState = menu.activateTrigger(Trigger.PILIH_WAKTU);
-            //Rincian rincian = new Rincian(label3.Text, label5.Text, label7.Text, label9.Text, $"{comboBox1.SelectedItem}, {comboBox2.SelectedItem} WIB", nextState);
-            //rincian.Show();
+            Rincian rincian = new Rincian(label3.Text, label5.Text, label7.Text, label9.Text, $"{comboBox1.SelectedItem}, {comboBox2.SelectedItem} WIB", nextState);
+            rincian.Show();
             this.Hide();
             menu.activateTrigger(Trigger.PILIH_WAKTU);
         }
