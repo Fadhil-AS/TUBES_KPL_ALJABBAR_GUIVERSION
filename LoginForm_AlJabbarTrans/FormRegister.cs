@@ -13,21 +13,20 @@ namespace AlJabbarTrans
 {
     public partial class FormRegister : Form
     {
+        private string email;
+        private string password;
+        private string konfirmasi;
+
         public FormRegister()
         {
             InitializeComponent();
         }
 
-        private void labelEmail_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonDaftar_Click(object sender, EventArgs e)
         {
-            string email = textBoxEmail.Text;
-            string password = textBoxPassword.Text;
-            string konfirmasi = textBoxKonfirmasiPassword.Text;
+            email = textBoxEmail.Text;
+            password = textBoxPassword.Text;
+            konfirmasi = textBoxKonfirmasiPassword.Text;
 
             if (email.Contains("@") && !password.Equals("") && !konfirmasi.Equals(""))
             {
@@ -36,10 +35,12 @@ namespace AlJabbarTrans
                 login.Show();
                 this.Hide();
             }
+
             else if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(konfirmasi))
             {
                 MessageBox.Show("Harap isi semua bidang dengan benar.");
             }
+
             else if (!email.Contains("@"))
             {
                 MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
