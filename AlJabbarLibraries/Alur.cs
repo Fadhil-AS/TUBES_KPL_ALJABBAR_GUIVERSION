@@ -65,7 +65,7 @@ namespace AlJabbarLibraries
             Jakarta
         }
 
-        public List<string> PrintEnumValues<T>() where T : Enum
+        public List<string> PrintEnumValues<T>() where T : Enum //Untuk Print isi enum
         {
             // Membuat instance baru dari List<string> untuk menyimpan nilai-nilai enum.
             List<string> enumValues = new List<string>();
@@ -130,8 +130,8 @@ namespace AlJabbarLibraries
             return enumValues;
         }
 
-        public int getHarga(ComboBox comboBox1, ComboBox comboBox2, ComboBox comboBox3)
-        {
+        // Untuk mendapatkan tarif berdasarkan input comboBox dan enum
+        public int getHarga(ComboBox comboBox1, ComboBox comboBox2, ComboBox comboBox3) { 
             // Mengambil nilai indeks dari comboBox1 dan mengkonversinya ke tipe enum AreaType
             AreaType kantorAsal = (AreaType)comboBox1.SelectedIndex;
 
@@ -160,6 +160,7 @@ namespace AlJabbarLibraries
             return 0;
         }
 
+        // Untuk mendapatkan kode bus berdarkan pilihan comboBox dan enum
         public string getKodeBus(ComboBox comboBox1, ComboBox comboBox2)
         {
             // Mengambil nilai pilihan dari combo box
