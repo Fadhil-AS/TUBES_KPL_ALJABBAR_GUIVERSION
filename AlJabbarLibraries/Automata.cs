@@ -53,7 +53,7 @@ namespace AlJabbarLibraries
                 new Transition(prosesPesan.BERANDA, prosesPesan.PILIHWAKTU, Trigger.PILIH_TUJUAN),
                 new Transition(prosesPesan.PILIHWAKTU, prosesPesan.RINCIAN, Trigger.PILIH_WAKTU),
                 new Transition(prosesPesan.PILIHWAKTU, prosesPesan.BERANDA, Trigger.PILIH_TUJUAN)
-            };
+        };
 
         public prosesPesan getStateBerikutnya(prosesPesan stateAwal, Trigger trigger)
         {
