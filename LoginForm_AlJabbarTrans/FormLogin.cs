@@ -19,7 +19,7 @@ namespace LoginForm_AlJabbarTrans
             InitializeComponent();
             menuProsesPesan = new Automata();
 
-            // Mengatur state adalah Login
+            // Mengatur state awal yaitu Login
             menuProsesPesan.currentState = prosesPesan.LOGIN;
         }
 
