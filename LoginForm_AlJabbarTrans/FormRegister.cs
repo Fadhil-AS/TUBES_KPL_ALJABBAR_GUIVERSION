@@ -20,47 +20,42 @@ namespace AlJabbarTrans
         public FormRegister(prosesPesan currentState)
         {
             InitializeComponent();
+
+            // Inisialisasi objek menu
             menu = new Automata();
+
+            // Set nilai currentState pada objek menu
             menu.currentState = currentState;
-        }
-
-        private void labelEmail_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonDaftar_Click(object sender, EventArgs e)
         {
+            // Mengambil nilai input dari TextBox
             string email = textBoxEmail.Text;
             string password = textBoxPassword.Text;
             string konfirmasi = textBoxKonfirmasiPassword.Text;
 
             if (email.Contains("@") && !password.Equals("") && !konfirmasi.Equals(""))
             {
+                // Jika email mengandung "@" dan password serta konfirmasi tidak kosong
+                // Tampilkan pesan berhasil dan tampilkan form login
                 MessageBox.Show("Akun berhasil didaftarkan!");
                 menu.activateTrigger(Trigger.MASUK);
                 formLogin login = new formLogin();
                 login.Show();
                 this.Hide();
             }
-            else if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(konfirmasi))
+            else if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password) && !string.IsNullOrWhiteSpace(konfirmasi))
             {
+                // Jika email, password, atau konfirmasi password kosong atau hanya terdiri dari whitespace
                 MessageBox.Show("Harap isi semua bidang dengan benar.");
             }
             else if (!email.Contains("@"))
             {
+                // Jika email tidak mengandung karakter "@"
+                // Tampilkan pesan peringatan
                 MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void textBoxEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormRegister_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
