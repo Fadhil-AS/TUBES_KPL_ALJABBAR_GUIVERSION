@@ -52,5 +52,6 @@ namespace AlJabbarTrans
             int randomNumber = random.Next(1000, 10000);
             label15.Text = randomNumber.ToString(); // Menampilkan angka acak sebagai nomor rincian
         }
+        //Tamat~~~
     }
 }
