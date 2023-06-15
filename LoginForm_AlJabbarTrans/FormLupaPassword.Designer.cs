@@ -158,6 +158,7 @@
             Name = "FormLupaPassword";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += FormLupaPassword_Load;
             ResumeLayout(false);
             PerformLayout();
         }

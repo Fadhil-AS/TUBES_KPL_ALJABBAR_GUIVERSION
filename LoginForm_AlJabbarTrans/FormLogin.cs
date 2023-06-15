@@ -5,14 +5,22 @@ using System.Diagnostics.Contracts;
 using System.Diagnostics;
 using TextBox = System.Windows.Forms.TextBox;
 using AlJabbarTrans;
+using AlJabbarLibraries;
+using static AlJabbarLibraries.Automata;
 
 namespace LoginForm_AlJabbarTrans
 {
     public partial class formLogin : Form
     {
+        private Automata menu;
+
         public formLogin()
         {
             InitializeComponent();
+            menu = new Automata();
+
+            // Mengatur state adalah Login
+            menu.currentState = prosesPesan.LOGIN;
         }
 
         // Method buttonMasuk_Click digunakan untuk masuk ke halaman dashboard/awal dengan menggunakan validasi
@@ -39,7 +47,8 @@ namespace LoginForm_AlJabbarTrans
             }
             else
             {
-                Beranda nextDashboardApp = new Beranda();
+                prosesPesan nextState = menu.activateTrigger(Trigger.MASUK);
+                Beranda nextDashboardApp = new Beranda(nextState);
                 nextDashboardApp.Show();
                 this.Hide();
             }
@@ -49,19 +58,6 @@ namespace LoginForm_AlJabbarTrans
         {
 
         }
-
-        // Method buttonDaftar_Click digunakan untuk menampilkan halaman Daftar
-        /*private void buttonDaftar_Click(object sender, EventArgs e)
-        {
-            // Membuat objek dari form selanjutnya
-            FormDaftar nextFormDaftar = new FormDaftar();
-
-            // Menampilkan form selanjutnya
-            nextFormDaftar.Show();
-
-            // Menyembunyikan form saat ini
-            this.Hide();
-        }*/
 
         // Method formLogin_FormClosed digunakan untuk menutup formLogin
         private void formLogin_FormClosed(object sender, FormClosedEventArgs e)
@@ -77,24 +73,23 @@ namespace LoginForm_AlJabbarTrans
 
         private void buttonDaftar_Click(object sender, EventArgs e)
         {
-            FormRegister register = new FormRegister();
+            prosesPesan nextState = menu.activateTrigger(Trigger.DAFTAR);
+            FormRegister register = new FormRegister(nextState);
             register.Show();
             this.Hide();
         }
 
         private void labelLupaPassword_Click(object sender, EventArgs e)
         {
-            FormLupaPassword formLupaPassword = new FormLupaPassword();
+            prosesPesan nextState = menu.activateTrigger(Trigger.LUPA);
+            FormLupaPassword formLupaPassword = new FormLupaPassword(nextState);
             formLupaPassword.Show();
             this.Hide();
         }
 
-        // Method labelLupaPassword_Click untuk menampilkan halaman LupaPasswordFormApp
-        /*private void labelLupaPassword_Click(object sender, EventArgs e)
+        private void formLogin_Load(object sender, EventArgs e)
         {
-            lupaPassword nextLupaPasswordFormApp = new lupaPassword();
-            nextLupaPasswordFormApp.Show();
-            this.Hide();
-        }*/
+            
+        }
     }
 }

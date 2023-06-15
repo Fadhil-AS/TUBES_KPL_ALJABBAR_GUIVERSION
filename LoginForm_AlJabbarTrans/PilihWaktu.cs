@@ -52,15 +52,17 @@ namespace AlJabbarTrans
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Beranda home = new Beranda();
+            // Mengaktifkan trigger PILIH_TUJUAN pada state machine menu
+            prosesPesan backState = menu.activateTrigger(Trigger.PILIH_TUJUAN);
+            Beranda home = new Beranda(backState);
             home.Show();
             this.Hide();
-            // Mengaktifkan trigger PILIH_TUJUAN pada state machine menu
-            menu.activateTrigger(Trigger.PILIH_TUJUAN);
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Memastikan bahwa item yang dipilih tidak null sebelum mengambil nilainya *SECURE CODING
             if (comboBox1.SelectedItem != null)
             {
                 SelectedValueComboBox1 = comboBox1;

@@ -45,7 +45,7 @@ namespace AlJabbarTrans
             if (formBeranda != null)
             {
                 // Menghitung dan menampilkan harga pemesanan dari Alur berdasarkan pilihan waktu dan kursi
-                label17.Text = (pesan.getHarga(formPilihBis.SelectedValueComboBox1, formPilihBis.SelectedValueComboBox2, formBeranda.SelectedValueComboBox)).ToString();
+                label17.Text = (pesan.getHarga(formBeranda.SelectedValueComboBox1, formBeranda.SelectedValueComboBox2, formBeranda.SelectedValueComboBox3)).ToString();
             }
 
             Random random = new Random();

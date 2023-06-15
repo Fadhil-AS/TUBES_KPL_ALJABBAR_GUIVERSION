@@ -142,6 +142,7 @@
             Name = "formLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += formLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AlJabbarLibraries;
 using LoginForm_AlJabbarTrans;
+using static AlJabbarLibraries.Automata;
 
 namespace AlJabbarTrans
 {
     public partial class FormLupaPassword : Form
     {
-        public FormLupaPassword()
+        private Automata menu;
+
+        public FormLupaPassword(prosesPesan currentState)
         {
             InitializeComponent();
+            menu = new Automata();
+            menu.currentState = currentState;
         }
 
 
@@ -29,9 +35,15 @@ namespace AlJabbarTrans
             formLogin login = new formLogin();
             login.Show();
             this.Hide();
+            menu.activateTrigger(Trigger.MASUK);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormLupaPassword_Load(object sender, EventArgs e)
         {
 
         }
