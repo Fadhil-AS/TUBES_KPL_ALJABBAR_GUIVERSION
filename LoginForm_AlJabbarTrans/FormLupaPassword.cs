@@ -24,28 +24,44 @@ namespace AlJabbarTrans
             menu.currentState = currentState;
         }
 
-
-        private void textBox1_Click(object sender, EventArgs e)
+        private void buttonSimpan_Click(object sender, EventArgs e)
         {
+            string email = textBoxEmail.Text;
+            string password = textBoxPassword.Text;
+            string konfirmasiPass = textBoxKonfirmasiPass.Text;
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            formLogin login = new formLogin();
-            login.Show();
-            this.Hide();
-            menu.activateTrigger(Trigger.MASUK);
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormLupaPassword_Load(object sender, EventArgs e)
-        {
-
+            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password) && string.IsNullOrEmpty(konfirmasiPass))
+            {
+                MessageBox.Show("Email dan password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Email harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (string.IsNullOrEmpty(konfirmasiPass))
+            {
+                MessageBox.Show("Konfirmasi Password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (password != konfirmasiPass)
+            {
+                MessageBox.Show("Password dan Konfirmasi Password harus sama!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!email.Contains("@"))
+            {
+                MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Password telah berhasil di ganti!");
+                menu.activateTrigger(Trigger.MASUK);
+                formLogin login = new formLogin();
+                login.Show();
+                this.Hide();
+            }
         }
     }
 }
