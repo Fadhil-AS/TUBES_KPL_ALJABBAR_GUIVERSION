@@ -59,7 +59,6 @@
             labelEmail.Size = new Size(152, 28);
             labelEmail.TabIndex = 13;
             labelEmail.Text = "Masukkan Email";
-            labelEmail.Click += labelEmail_Click;
             // 
             // textBoxPassword
             // 
@@ -77,7 +76,6 @@
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(255, 34);
             textBoxEmail.TabIndex = 11;
-            textBoxEmail.TextChanged += textBoxEmail_TextChanged;
             // 
             // labelLogin
             // 

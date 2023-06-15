@@ -10,6 +10,9 @@ namespace AlJabbarLibraries
     {
         public enum prosesPesan
         {
+            LOGIN,
+            LUPA_PASSWORD,
+            REGISTER,
             BERANDA,
             PILIHWAKTU,
             RINCIAN
@@ -17,6 +20,9 @@ namespace AlJabbarLibraries
 
         public enum Trigger
         {
+            LUPA,
+            DAFTAR,
+            MASUK,
             PILIH_TUJUAN,
             PILIH_WAKTU
         }
@@ -39,10 +45,15 @@ namespace AlJabbarLibraries
 
         Transition[] transisi =
         {
+                new Transition(prosesPesan.LOGIN, prosesPesan.REGISTER, Trigger.DAFTAR),
+                new Transition(prosesPesan.REGISTER, prosesPesan.LOGIN, Trigger.MASUK),
+                new Transition(prosesPesan.LOGIN, prosesPesan.LUPA_PASSWORD, Trigger.LUPA),
+                new Transition(prosesPesan.LUPA_PASSWORD, prosesPesan.LOGIN, Trigger.MASUK),
+                new Transition(prosesPesan.LOGIN, prosesPesan.BERANDA, Trigger.MASUK),
                 new Transition(prosesPesan.BERANDA, prosesPesan.PILIHWAKTU, Trigger.PILIH_TUJUAN),
                 new Transition(prosesPesan.PILIHWAKTU, prosesPesan.RINCIAN, Trigger.PILIH_WAKTU),
                 new Transition(prosesPesan.PILIHWAKTU, prosesPesan.BERANDA, Trigger.PILIH_TUJUAN)
-            };
+        };
 
         public prosesPesan getStateBerikutnya(prosesPesan stateAwal, Trigger trigger)
         {
