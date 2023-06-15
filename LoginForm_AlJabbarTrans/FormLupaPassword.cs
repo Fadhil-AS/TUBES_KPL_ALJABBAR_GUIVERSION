@@ -26,7 +26,7 @@ namespace AlJabbarTrans
         }
 
 
-        //Method yang digunakan ketika klik button Simpan
+        //Method yang digunakan untuk kembali ke halaman login ketika klik button Simpan
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
             //Input pada setiap textBox berupa string
@@ -77,7 +77,11 @@ namespace AlJabbarTrans
                 MessageBox.Show("Password telah berhasil di ganti!");
                 menu.activateTrigger(Trigger.MASUK);
                 formLogin login = new formLogin();
+
+                //Akan menampilkan halaman login
                 login.Show();
+
+                //Akan Menutup halaman lupa password
                 this.Hide();
             }
         }

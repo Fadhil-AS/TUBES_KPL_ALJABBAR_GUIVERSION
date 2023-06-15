@@ -153,7 +153,7 @@
             MinimizeBox = false;
             Name = "FormLupaPassword";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "FormLupaPassword";
             ResumeLayout(false);
             PerformLayout();
         }
