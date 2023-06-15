@@ -71,6 +71,7 @@ namespace LoginForm_AlJabbarTrans
 
         }
 
+        // Method buttonDaftar_Click digunakan berpindah halaman dari FormLogin ke FormRegister
         private void buttonDaftar_Click(object sender, EventArgs e)
         {
             prosesPesan nextState = menuProsesPesan.activateTrigger(Trigger.DAFTAR);
@@ -79,6 +80,7 @@ namespace LoginForm_AlJabbarTrans
             this.Hide();
         }
 
+        // Method buttonDaftar_Click digunakan berpindah halaman dari FormLogin ke FormLupaPassword
         private void labelLupaPassword_Click(object sender, EventArgs e)
         {
             prosesPesan nextState = menuProsesPesan.activateTrigger(Trigger.LUPA);
