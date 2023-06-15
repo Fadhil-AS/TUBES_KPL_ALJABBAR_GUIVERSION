@@ -29,18 +29,22 @@ namespace LoginForm_AlJabbarTrans
             string emailAddress = textBoxEmail.Text;
             string userPassword = textBoxPassword.Text;
 
+            // Memastikan bahwa emailAddres dan userPassword tidak boleh kosong
             if (string.IsNullOrEmpty(emailAddress) && string.IsNullOrEmpty(userPassword))
             {
                 MessageBox.Show("Email dan password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            // Memastikan bahwa emailAddres tidak boleh kosong
             else if (string.IsNullOrEmpty(emailAddress))
             {
                 MessageBox.Show("Email harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            // Memastikan bahwa userPassword tidak boleh kosong
             else if (string.IsNullOrEmpty(userPassword))
             {
                 MessageBox.Show("Password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            // Memastikan bahwa emailAddres harus memiliki domain
             else if (!emailAddress.Contains("@"))
             {
                 MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
