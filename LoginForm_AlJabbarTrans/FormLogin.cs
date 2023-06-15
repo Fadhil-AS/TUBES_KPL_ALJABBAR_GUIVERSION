@@ -17,22 +17,22 @@ namespace LoginForm_AlJabbarTrans
         // Method buttonMasuk_Click digunakan untuk masuk ke halaman dashboard/awal dengan menggunakan validasi
         private void buttonMasuk_Click(object sender, EventArgs e)
         {
-            string email = textBoxEmail.Text;
-            string password = textBoxPassword.Text;
+            string emailAddress = textBoxEmail.Text;
+            string userPassword = textBoxPassword.Text;
 
-            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(emailAddress) && string.IsNullOrEmpty(userPassword))
             {
                 MessageBox.Show("Email dan password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (string.IsNullOrEmpty(email))
+            else if (string.IsNullOrEmpty(emailAddress))
             {
                 MessageBox.Show("Email harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (string.IsNullOrEmpty(password))
+            else if (string.IsNullOrEmpty(userPassword))
             {
                 MessageBox.Show("Password harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (!email.Contains("@"))
+            else if (!emailAddress.Contains("@"))
             {
                 MessageBox.Show("Email harus memiliki domain", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
